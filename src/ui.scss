@@ -1,0 +1,97 @@
+// using Figma color tokens where applicable
+// https://www.figma.com/plugin-docs/css-variables/#list-of-all-available-color-tokens
+
+body {
+  background-color: var(--figma-color-bg);
+  color: var(--figma-color-text);
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  margin: 16px;
+}
+
+h1 {
+  font-size: 22px;
+  margin: 0 0 0 8px;
+}
+
+h2 {
+  border-bottom: 1px solid var(--figma-color-border);
+  font-size: 18px;
+  padding-bottom: 8px;
+}
+
+svg {
+  fill: var(--figma-color-text);
+}
+
+p {
+  margin: 0;
+}
+
+.flex-row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row-space {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.spacer-16 {
+  height: 16px;
+  width: 100%;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid var(--figma-color-text);
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: var(--figma-color-text);
+  cursor: pointer;
+  display: flex;
+  font-size: 11px;
+  height: 32px;
+  justify-content: center;
+  line-height: 30px;
+  max-width: 200px;
+  outline: none;
+  padding: 0 11px;
+  text-align: center;
+}
+
+button.brand {
+  background-color: var(--figma-color-bg-brand);
+  border-color: var(--figma-color-bg-brand);
+  box-shadow: none;
+  color: var(--figma-color-text-onbrand);
+
+  &:focus {
+    border: 2px solid var(--figma-color-border-selected-strong);
+    padding: 0 10px;
+  }
+}
+
+.preview-image {
+  border: 1px solid var(--figma-color-border);
+  border-radius: 6px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  width: 64px;
+}
