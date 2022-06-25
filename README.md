@@ -1,4 +1,4 @@
-# Figma Plugin: React Starter
+# Figma Plugin: Node Inspector
 
 ## Table of Contents
 
@@ -6,7 +6,6 @@
 - [Features](#features)
 - [Linting](#linting)
 - [Release Notes](#release-notes)
-- [Helpful Links](#helpful-links)
 
 ## Install & Build
 
@@ -24,9 +23,8 @@ Run Production bundle: `npm run bundle`
 
 ## Features
 
-- Webpack 5 + React (javascript) + SCSS
-- Production Bundling + Zipped
-- Interact with UI in Browser
+- Ability to Inspect Figma Node's
+- If component is part of a Library, ability to view it's [Component Properties](https://help.figma.com/hc/en-us/articles/5579474826519-Create-and-use-component-properties)
 
 ## Linting
 
@@ -40,36 +38,10 @@ Run Production bundle: `npm run bundle`
 
 ## Release Notes
 
-**version 1.1.0**
-
-- added [Dark Mode](https://www.figma.com/plugin-docs/css-variables/) support with the announcement of [Dark Mode for Figma](https://help.figma.com/hc/en-us/articles/5576781786647-Change-themes-in-Figma)
-- updated React and React DOM to v.18
-
 **version 1.0.0**
 
-- Examples of how to:
-  - communicate with Figma via postMessage bridge
-  - traverse a Figma frame for images
-  - zoom/scroll to a specific node in the Figma Document
-  - resize the plugin
-  - close the plugin programmatically
-- Started with React and React DOM to v.17
+- added [Dark Mode](https://www.figma.com/plugin-docs/css-variables/) support with the announcement of [Dark Mode for Figma](https://help.figma.com/hc/en-us/articles/5576781786647-Change-themes-in-Figma)
+- Started with React and React DOM to v.18
+- Started with Webpack v.5
 
-## Helpful Links
-
-**Figma**
-
-- [Post Message to UI Layer](https://www.figma.com/plugin-docs/api/figma-ui/#postmessage)
-- [Close Plugin](https://www.figma.com/plugin-docs/api/figma-ui/#close)
-
-**Webpack**
-
-- [Webpack development](https://webpack.js.org/guides/development/)
-- [Webpack dev server](https://webpack.js.org/configuration/dev-server/)
-- [Webpack devtool](https://webpack.js.org/configuration/devtool/)
-- [Webpack + React guide help](https://www.toptal.com/react/webpack-react-tutorial-pt-1)
-- Errors
-  - [Webpack public pathing](https://stackoverflow.com/questions/64294706/webpack5-automatic-publicpath-is-not-supported-in-this-browser)
-  - [Webpack and transpiling](https://stackoverflow.com/questions/59709252/how-can-i-solve-my-typescript-eslint-webpack-transpiling-problem)
-
-Based off [Figma Webpack React (TypeScript) Example](https://github.com/figma/plugin-samples#webpack--react)
+Based off [Figma Plugin React Starter](https://github.com/calebnance/figma-plugin-react-starter)
