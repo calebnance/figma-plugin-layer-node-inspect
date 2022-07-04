@@ -41,6 +41,14 @@ p {
   justify-content: space-between;
 }
 
+.flex-center-fill {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
