@@ -17,6 +17,12 @@ p {
   margin: 0;
 }
 
+pre {
+  background-color: var(--figma-color-bg-tertiary);
+  color: var(--figma-color-text);
+  padding: 4px;
+}
+
 .flex-row {
   align-items: center;
   display: flex;

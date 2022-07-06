@@ -4,6 +4,9 @@ import { createRoot } from 'react-dom/client';
 // scss base
 import './ui.scss';
 
+// components
+import Results from './components/Results';
+
 // function for message bridge to figma
 const sendToFigma = (type, data) => {
   parent.postMessage({ pluginMessage: { type, ...data } }, '*');
@@ -19,9 +22,9 @@ const App = () => {
   const messageFromFigma = (event) => {
     const { data, type } = event.data.pluginMessage;
 
-    console.log('type', type);
-    console.log('data', data);
-    console.log('===============');
+    // console.log('type', type);
+    // console.log('data', data);
+    // console.log('===============');
 
     // on selection change
     if (type === 'selected-count') {
@@ -34,7 +37,7 @@ const App = () => {
 
     // display results
     if (type === 'results') {
-      setResults(data.node);
+      setResults(data.results);
     }
   };
 
@@ -49,6 +52,14 @@ const App = () => {
       window.removeEventListener('message', messageFromFigma);
     };
   }, []);
+
+  if (results !== null) {
+    return (
+      <main>
+        <Results data={results} />
+      </main>
+    );
+  }
 
   return (
     <main>

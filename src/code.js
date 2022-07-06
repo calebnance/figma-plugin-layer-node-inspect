@@ -54,9 +54,38 @@ figma.ui.onmessage = async (msg) => {
     if (node === null) {
       figma.notify('Node could not be found', { error: true });
     } else {
+      console.log('node', node);
+
+      let mainComponent;
+      // is instance/library component?
+      if (node?.mainComponent) {
+        const { key, name } = node.mainComponent;
+        const { componentPropertyDefinitions } = node.mainComponent.parent;
+
+        mainComponent = {
+          key,
+          name,
+          componentPropertyDefinitions
+        };
+      }
+
+      const results = {
+        id: node.id,
+        locked: node.locked,
+        type: node.type,
+        visible: node.visible,
+        mainComponent
+        // ...(node?.mainComponent && { mainComponent: node.mainComponent })
+      };
+
+      console.log('results', results);
+      console.log('================================');
+
       figma.ui.postMessage({
         type: 'results',
-        data: { node }
+        data: {
+          results
+        }
       });
     }
   }
