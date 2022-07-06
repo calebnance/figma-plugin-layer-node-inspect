@@ -1,11 +1,13 @@
 // https://www.figma.com/plugin-docs/api/properties/figma-showui/
-figma.showUI(__html__, { height: 400, width: 380, themeColors: true });
-
-console.clear();
+figma.showUI(__html__, { height: 480, width: 380, themeColors: true });
 
 let listenForSelection = true;
 
-figma.on('run', () => {
+// deselect all on open
+figma.currentPage.selection = [];
+
+figma.once('run', () => {
+  console.clear();
   console.log('plugin started');
 });
 
@@ -14,9 +16,22 @@ figma.on('run', () => {
 figma.on('selectionchange', () => {
   // only listen when nothing has been confirmed
   if (listenForSelection === true) {
+    const selected = figma.currentPage.selection;
+    console.log('selected', selected);
+    let node = null;
+
+    if (selected.length === 1) {
+      node = {
+        id: selected[0].id,
+        name: selected[0].name
+      };
+    }
+
+    // respond to UI layer
+    // https://www.figma.com/plugin-docs/api/figma-ui/#postmessage
     figma.ui.postMessage({
       type: 'selected-count',
-      data: { count: figma.currentPage.selection.length }
+      data: { count: selected.length, node }
     });
   }
 });
@@ -26,21 +41,23 @@ figma.on('selectionchange', () => {
 figma.ui.onmessage = async (msg) => {
   const { type } = msg;
 
-  // get selected count
-  // ///////////////////////////////////////////////////////////////////////////
-  if (type === 'get-selected-count') {
-    // respond to UI layer
-    // https://www.figma.com/plugin-docs/api/figma-ui/#postmessage
-    figma.ui.postMessage({
-      type: 'selected-count',
-      data: { count: figma.currentPage.selection.length }
-    });
-  }
-
   // get node info
   // ///////////////////////////////////////////////////////////////////////////
   if (type === 'get-node-info') {
+    const { nodeId } = msg;
     listenForSelection = false;
-    console.log('msg', msg);
+
+    // get node
+    const node = figma.getNodeById(nodeId);
+
+    // make sure node is there
+    if (node === null) {
+      figma.notify('Node could not be found', { error: true });
+    } else {
+      figma.ui.postMessage({
+        type: 'results',
+        data: { node }
+      });
+    }
   }
 };

@@ -11,21 +11,35 @@ const sendToFigma = (type, data) => {
 
 const App = () => {
   const [selected, setSelected] = React.useState(0);
+  const [node, setNode] = React.useState(null);
   const [results, setResults] = React.useState(null);
 
   // main listener for all messages from Figma bridge
   // https://www.figma.com/plugin-docs/how-plugins-run/
   const messageFromFigma = (event) => {
     const { data, type } = event.data.pluginMessage;
-    console.log('got message');
+
+    console.log('type', type);
+    console.log('data', data);
+    console.log('===============');
 
     // on selection change
     if (type === 'selected-count') {
       setSelected(data.count);
+
+      if (data.node !== null) {
+        setNode(data.node);
+      }
     }
-    console.log('type', type);
-    console.log('data', data);
-    console.log('===============');
+
+    // display results
+    if (type === 'results') {
+      setResults(data.node);
+    }
+  };
+
+  const confirmSelected = () => {
+    sendToFigma('get-node-info', { nodeId: node.id });
   };
 
   React.useEffect(() => {
@@ -39,18 +53,29 @@ const App = () => {
   return (
     <main>
       {selected === 0 && (
-        <React.Fragment>
-          <div className="flex-center-fill">please select a node</div>
-          <div className="spacer-16" />
-          <button className="brand" type="submit">
-            Confirm
-          </button>
-        </React.Fragment>
+        <div className="flex-center-fill">Please select a node</div>
       )}
 
-      {selected > 1 && <div>only select 1 node at a time</div>}
+      {selected > 1 && (
+        <div className="flex-center-fill">Only select 1 node at a time</div>
+      )}
 
-      {selected === 1 && <div>has selected 1</div>}
+      {selected === 1 && (
+        <div className="flex-center-fill text-center">
+          {node !== null && (
+            <p>
+              {`Selected layer: `}
+              <strong>{node.name}</strong>
+            </p>
+          )}
+
+          <div className="spacer-16" />
+
+          <button className="brand" type="submit" onClick={confirmSelected}>
+            View Node
+          </button>
+        </div>
+      )}
     </main>
   );
 };
