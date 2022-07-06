@@ -1,4 +1,4 @@
-# Figma Plugin: Node Inspector
+# Figma Plugin: Layer Node Inspect
 
 ## Table of Contents
 

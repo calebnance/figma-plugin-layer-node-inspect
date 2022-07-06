@@ -1,5 +1,5 @@
 {
-  "name": "Figma Node Inspector",
+  "name": "Layer Node Inspect",
   "id": "",
   "api": "1.0.0",
   "main": "dist/code.js",
