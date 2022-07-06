@@ -89,4 +89,13 @@ figma.ui.onmessage = async (msg) => {
       });
     }
   }
+
+  // turn listener back on
+  // ///////////////////////////////////////////////////////////////////////////
+  if (type === 'listen-for-selection') {
+    listenForSelection = true;
+
+    // deselect all
+    figma.currentPage.selection = [];
+  }
 };

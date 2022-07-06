@@ -45,6 +45,16 @@ const App = () => {
     sendToFigma('get-node-info', { nodeId: node.id });
   };
 
+  const resetSelection = () => {
+    // reset local state
+    setSelected(0);
+    setNode(null);
+    setResults(null);
+
+    // tell figma to listen for selection
+    sendToFigma('listen-for-selection');
+  };
+
   React.useEffect(() => {
     window.addEventListener('message', messageFromFigma);
 
@@ -57,6 +67,14 @@ const App = () => {
     return (
       <main>
         <Results data={results} />
+
+        <div className="spacer-64" />
+
+        <div className="footer-sticky">
+          <button className="brand" type="submit" onClick={resetSelection}>
+            Select another layer
+          </button>
+        </div>
       </main>
     );
   }
@@ -83,7 +101,7 @@ const App = () => {
           <div className="spacer-16" />
 
           <button className="brand" type="submit" onClick={confirmSelected}>
-            View Node
+            View layer data
           </button>
         </div>
       )}

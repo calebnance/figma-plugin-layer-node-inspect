@@ -1,6 +1,10 @@
 // using Figma color tokens where applicable
 // https://www.figma.com/plugin-docs/css-variables/#list-of-all-available-color-tokens
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--figma-color-bg);
   color: var(--figma-color-text);
@@ -54,6 +58,11 @@ pre {
   width: 100%;
 }
 
+.spacer-64 {
+  height: 64px;
+  width: 100%;
+}
+
 .text-center {
   text-align: center;
 }
@@ -95,11 +104,14 @@ button.brand {
   }
 }
 
-.preview-image {
-  border: 1px solid var(--figma-color-border);
-  border-radius: 6px;
-  height: 64px;
-  object-fit: contain;
-  margin-bottom: 16px;
-  width: 64px;
+.footer-sticky {
+  background-color: var(--figma-color-bg);
+  bottom: 0;
+  display: flex;
+  filter: drop-shadow(0 0 4px var(--figma-color-bg));
+  justify-content: flex-end;
+  left: 0;
+  padding: 16px;
+  position: fixed;
+  width: 100%;
 }
