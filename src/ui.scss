@@ -104,6 +104,23 @@ button.brand {
   }
 }
 
+.list {
+  .line-item {
+    align-items: center;
+    background-color: var(--figma-color-bg-tertiary);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .footer-sticky {
   background-color: var(--figma-color-bg);
   bottom: 0;

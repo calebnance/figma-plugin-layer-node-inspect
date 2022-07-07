@@ -71,10 +71,19 @@ figma.ui.onmessage = async (msg) => {
 
       const results = {
         id: node.id,
-        locked: node.locked,
+        name: node.name,
         type: node.type,
-        visible: node.visible,
-        mainComponent
+
+        mainComponent,
+
+        height: node.height,
+        width: node.width,
+        x: node.x,
+        y: node.y,
+
+        expanded: node.expanded,
+        locked: node.locked,
+        visible: node.visible
         // ...(node?.mainComponent && { mainComponent: node.mainComponent })
       };
 
