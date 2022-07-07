@@ -74,8 +74,6 @@ figma.ui.onmessage = async (msg) => {
         name: node.name,
         type: node.type,
 
-        mainComponent,
-
         height: node.height,
         width: node.width,
         x: node.x,
@@ -83,7 +81,9 @@ figma.ui.onmessage = async (msg) => {
 
         expanded: node.expanded,
         locked: node.locked,
-        visible: node.visible
+        visible: node.visible,
+
+        mainComponent
         // ...(node?.mainComponent && { mainComponent: node.mainComponent })
       };
 
