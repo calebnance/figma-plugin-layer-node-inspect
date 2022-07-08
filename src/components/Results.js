@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 
 // components
+import ComponentProperties from './ComponentProperties';
 import LineItem from './LineItem';
 
 const Results = ({ data }) => {
@@ -18,13 +19,15 @@ const Results = ({ data }) => {
 
             return (
               <React.Fragment key={key}>
-                <h3>Main Component</h3>
+                <h2>Main Component</h2>
 
                 {keysMainArray.map((keyMain) => {
                   const valueMain = value[keyMain];
 
                   if (keyMain === 'componentPropertyDefinitions') {
-                    return null;
+                    return (
+                      <ComponentProperties key={keyMain} data={valueMain} />
+                    );
                   }
 
                   return (
@@ -43,7 +46,7 @@ const Results = ({ data }) => {
         })}
       </div>
 
-      <h3>JSON</h3>
+      <h2>JSON</h2>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );

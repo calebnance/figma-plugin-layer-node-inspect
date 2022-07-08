@@ -54,7 +54,7 @@ figma.ui.onmessage = async (msg) => {
     if (node === null) {
       figma.notify('Node could not be found', { error: true });
     } else {
-      console.log('node', node);
+      // console.log('node', node);
 
       let mainComponent;
       // is instance/library component?
@@ -83,7 +83,7 @@ figma.ui.onmessage = async (msg) => {
         locked: node.locked,
         visible: node.visible,
 
-        mainComponent
+        ...(mainComponent !== undefined && { mainComponent })
         // ...(node?.mainComponent && { mainComponent: node.mainComponent })
       };
 
